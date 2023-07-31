@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<script type="text/javascript" src="erstScript.js"></script>
+	<script type="text/javascript" src="Caesar.js"></script>
+	<script type="text/javascript" src="Skytale.js"></script>
+	<link rel="stylesheet" src="HalloWelt.css">
+	<title>HalloWeltSeite</title>
+	
+	
+	<style>
+	.column {
+		float: left;
+		width:20.00%;
+		padding: 15px;
+	}
+	
+	.column2 {
+		float: left;
+		width: 70%;
+		padding: 15px;
+		height: 100%;
+	}
+
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	</style>
+	
+</head>
+<body>
+
+	<h1>Javascript: Hallo Welt!</h1>
+		<p id="p1Welt">Drück mal den Knopf.</p>	
+		<button type="button" onclick="HalloWelt()">Ich bin der Knopf.</button>
+		<p id="p2Welt"></p>
+	
+		<!--
+	<script>
+	function HalloWelt() {
+		document.getElementById('p1Welt').innerHTML = "Hallo Welt!";
+		console.log("HalloWelt")
+	}
+	
+	</script>
+	-->
+	
+	<hr>
+	<h1>Javascript: Addition</h1>
+		<p> Gib zwei Zahlen zwischen +- eine Millionen ein, um die Summe zu erhalten.</p>
+	
+		<form onsubmit="Addition(parseInt(document.getElementById('zahl1').value), parseInt(document.getElementById('zahl2').value))">
+			<label for="zahl1">Erste Zahl:</label><br>
+			<input type="number" id="zahl1" name="zahl1" value="0" min="-1000000" max="1000000"><br>
+			<label for ="zahl2">Zweite Zahl:</label><br>
+			<input type="number" id="zahl2" name="zahl2" value="0" min="-1000000" max="1000000"><br><br>
+		
+			<!--Submit funktioniert nicht wie gewollt
+				add funktioniert wie gewollt
+				pur funktioniert wie gewollt-->
+			<input type="submit" value="Eingabesubmit">
+		
+			<button type="button" onclick="add()">Eingabeadd</button>
+			<input type="button" onclick="Addition(parseInt(document.getElementById('zahl1').value), parseInt(document.getElementById('zahl2').value))" value="Eingabepur"></button>
+			
+		</form>
+	
+		<p id="additionsAntwort"></p>
+	
+	<hr>
+	<h1>Javascript: Caesar-Chiffre</h1>
+		<p>Gib einen Schlüssel und einen Text ein, um den Text zu verschlüsseln.</p>
+	
+			<label for="key">Schlüssel:</label><br>
+			<input type="number" id="key" name="key" value="0" min="-1000000" max="1000000"><br>
+			<label for ="toencrypt">Zu verschlüsselnder Text:</label><br>
+			<input type="text" id="toencrypt" name="toencrypt"><br><br>
+			<button type="button" onclick="caesarClick()">Eingabe</button>
+			<!--
+			<button type="button" onclick="caesar2()">EingabeCaesar2</button>
+			-->
+		<pre id="CaesarAntwort"></pre>
+	
+	<hr>
+	<h1>Stilisierung</h1>
+	<div class="row">
+		<div class="column">
+			
+			<p>Gib einen Text und den gewünschten Stil an.</p>
+	
+			<label for="StilText">Gib einen Text ein:</label><br>
+			<input type="text" id="StilText" name="StilText"><br>
+			<button type="button" onclick="StilText(document.getElementById('StilText').value)">Text los!</button>
+	
+	
+			<!-- Schrifarten nach Radiobuttons:
+		<p>Wähle eine Schriftart:<p>
+		<form id="StilFonts">
+			<input type="radio" id="default" name="StilFont" value="">
+			<label for="default">Standard</label><br>
+			<input type="radio" id="arial" name="StilFont" value="arial">
+			<label for="arial">Arial</label><br>
+			<input type="radio" id="garamond" name="StilFont" value="garamond">
+			<label for="garamond">Garamond</label><br>
+			<input type="radio" id="trebuchet" name="StilFont" value='Trebuchet MS'>
+			<label for="trebuchet">Trebuchet MS</label><br>	
+			<input type="radio" id="tahoma" name="StilFont" value='Tahoma'>
+			<label for="tahoma">Tahoma</label><br>	
+			<input type="radio" id="courier" name="StilFont" value='Courier New'>
+			<label for="courier">Courier New</label><br>
+			<input type="radio" id="brush" name="StilFont" value='Brush Script MT'>
+			<label for="brush">Brush Script MT</label><br>
+			<input type="radio" id="lucidaHand" name="StilFont" value='Lucida Handwriting'>
+			<label for="lucidaHand">Lucida Handwriting</label><br>
+			<input type="radio" id="lucidaConsole" name="StilFont" value='Lucida Console'>
+			<label for="lucidaConsole">Lucida Console</label><br>		
+			<input type="radio" id="papyrus" name="StilFont" value='Papyrus'>
+			<label for="papyrus">Papyrus</label><br>	
+		</form>
+	
+		<button type="button" onclick="StilSchriftArt(document.querySelector('input[name=StilFont]:checked').value)">Schriftart so!</button>
+	-->
+		
+			<br><br><br>
+			<label for="selectFont">Wähle eine Schriftart:</label><br>
+			<select name="selectFont" id="selectFont" onchange="StilSchriftArt(document.getElementById('selectFont').value)">
+				<option value=''style="font-family:">Default</option>
+				<option value='arial' style="font-family:arial">Arial</option>
+				<option value='garamond'style="font-family:garamond">Garamond</option>
+				<option value='Trebuchet MS'style="font-family:'Trebuchet MS'">Trebuchet MS</option>
+				<option value='Courier New'style="font-family:'Courier New'">Courier New</option>
+				<option value='Brush Script MT'style="font-family:'Brush Script MT'">Brush Script MT</option>
+				<option value='Lucida Handwriting'style="font-family:'Lucida Handwriting'">Lucida Handwriting</option>
+				<option value='Lucida Console'style="font-family:'Lucida Console'">Lucida Console</option>
+				<option value='Papyrus'style="font-family:'Papyrus'">Papyrus</option>
+			
+				<option value=''style="font-family:"></option>
+				<option value=''style="font-family:"></option>
+				<option value=''style="font-family:"></option>
+			</select>
+		
+		
+			<br><br><br>
+			<label for="FontSize">Wähle eine Schriftgröße in em:</label><br>
+			<input onchange="StilSchriftGroesse(document.getElementById('FontSize').value)" type="number" id="FontSize" name="FontSize" value="1" step="0.1" min="0" max="10"><br><br>
+		
+		
+		
+		
+			<p>Wähle eine Schriftfarbe nach RGB:</p>
+			<form onchange="StilSchriftFarbe()">
+				<label for="RotFarbe">Wie viel rot? (0-255):</label><br>
+				<input type="number" id="RotFarbe" name="RotFarbe" value="0" min="0" max="255"><br>
+				<label for="GrünFarbe">Wie viel grün? (0-255):</label><br>
+				<input type="number" id="GrünFarbe" name="GrünFarbe" value="0" min="0" max="255"><br>
+				<label for="BlauFarbe">Wie viel blau? (0-255):</label><br>
+				<input type="number" id="BlauFarbe" name="BlauFarbe" value="0" min="0" max="255"><br>
+			</form><br>
+		
+		
+			<p>Wähle eine Hintergrundfarbe nach RGB:</p>
+			<form onchange="StilHinterFarbe()">
+				<label for="RotHinterFarbe">Wie viel rot? (0-255):</label><br>
+				<input type="number" id="RotHinterFarbe" name="RotHinterFarbe" value="0" min="0" max="255"><br>
+				<label for="GrünHinterFarbe">Wie viel grün? (0-255):</label><br>
+				<input type="number" id="GrünHinterFarbe" name="GrünHinterFarbe" value="0" min="0" max="255"><br>
+				<label for="BlauHinterFarbe">Wie viel blau? (0-255):</label><br>
+				<input type="number" id="BlauHinterFarbe" name="BlauHinterFarbe" value="0" min="0" max="255"><br>
+			</form><br><br>
+		</div>
+		<div class="column2" id="column2">
+			<p id="StilAntwort"></p>
+		</div>
+	</div>
+	<hr>
+
+	<h1>Skytale</h1>
+	<p>Verschlüsselung: Gib einen Klartext und einen Schlüssel an.</p>
+		<label for="SkytaleKlarText">Gib einen Text ein:</label><br>
+		<input type="text" id="SkytaleKlarText" name="SkytaleKlarText"><br><br>
+		<label for="SkytaleVerSchlüssel">Gib einen Schlüssel an:</label><br>
+		<input type="number" id="SkytaleVerSchlüssel" name="SkytaleVerSchlüssel" value="0" min="0" max="100"><br><br>
+		<button type="button" onclick="SkytaleEcht()">Skytale Variante Echt</button>
+		<button type="button" onclick="SkytaleAuchGut()">Skytale Variante Auch Gut</button>
+	
+	<pre id="SkytaleZuGeheim"></pre><br>
+
+	<p>Entschlüsselung: Gib einen Geheimtext und den zugehörigen Schlüssel an.</p>
+		<label for="SkytaleGeheimText">Gib einen Text ein:</label><br>
+		<input type="text" id="SkytaleGeheimText" name="SkytaleGeheimText"><br><br>
+		<label for="SkytaleEntSchlüssel">Gib den Schlüssel an:</label><br>
+		<input type="number" id="SkytaleEntSchlüssel" name="SkytaleEntSchlüssel" value="0" min="0" max="100"><br><br>
+		<button type="button" onclick="UnSkytaleEcht()">Skytale Variante Echt</button>
+		<button type="button" onclick="UnSkytaleAuchGut()">Skytale Variante Auch Gut</button>
+	
+	<pre id="SkytaleZuKlar"></pre>
+	<br><br><br>
+	
+</body>
+</html>

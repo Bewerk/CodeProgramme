@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Rotor-Verschlüsselung</title>
+        <link rel="stylesheet" href="Enigma.css">
+        <script type="text/javascript" src="Enigma.js"></script>
+        <script type="text/javascript" src="inkrementellRotor.js"></script>
+
+    </head>
+    <body>
+        <div class="grid-container">
+            <div class="header">
+                <a href="file:///C:/CodeProgramme/Html/Spreizung/Ceckerboard.html" style="float:left; font-size:20px">Spreizungszeug</a>
+                <h1>Eine Nicht-rotierende-Rotoren-Verschlüsselungsmethode</h1>
+            </div>
+
+            <div class="left">
+
+                <h2>Verschlüsseln und Entschlüsseln eines Textes:</h2>
+                <p>wählen Sie, ob Sie Ihren Text verschlüsseln, oder entschlüsseln möchten</p>
+                <select id="wetherDorEncrypt">
+                    <option value="true">Verschlüsseln</option>
+                    <option value="false">Entschlüsseln</option>
+                </select>
+
+                <p>Geben sie einen Text zum Verschlüsseln oder Entschlüsseln an.</p>
+                <input type="text" id="todecrypt" class="textfeld">
+
+                <p>Geben Sie einen zugehörigen Schlüssel an.</p>
+                <input type="number" id="key" value="0" min="0" max="1000">
+
+                <p>Auf los geht's los.</p>
+                <button type="button" onclick="callEnigma()">Los geht's!</button>
+
+                <div>
+                    <br>
+                    <p>Zu beachten:</p> 
+                    <p>- Der Schlüssel sollte nicht kleiner null sein. </p>
+                    <p>- Zum Ent- und Verschlüsseln denselben Zeichensatz und Rotoren verwenden.</p>
+                    <p>- Der Text muss aus Zeichen des Zeichensatzes bestehen.</p>
+                </div>
+            
+            </div>
+
+            <div class="below">
+                <p id="Antwort">Hier wird die Antwort stehen.</p>
+            </div>
+
+            <div class="right">
+
+                <h2>Zeichensatz und Rotoren austauschen:</h2>
+
+                <p>Geben Sie Ihren eigenen Zeichensatz an (Doppeltes wird rausgeschnitten).</p>
+                <input type="text" id="charSetInput" class="textfeld">
+                <button type="button" onclick="callSetCharSet()">Zeichensatz festlegen.</button>
+                <p>passende Rotoren werden automatisch generiert.</p>
+                
+                
+                <p>Der gegenwärtige Zeichensatz (Reihenfolge ist wichtig):</p>
+                <div id="myCharSet">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                <br>
+                <div> Rotor1:
+                    <div id="Rotor1">BDFHJLCPRTXVZNYEIWGAKMUSQO</div><br>
+                    Rotor2:
+                    <div id="Rotor2">AJDKSIRUXBLHWTMCQGZNPYFVOE</div><br>
+                    Rotor3:
+                    <div id="Rotor3">EKMFLGDQVZNTOWYHXUSPAIBRCJ</div><br>
+                </div>
+                
+
+                <p>Rotoren austauschen:</p>
+
+                <input type="text" id="makero1" class="textfeld">
+                <button type="button" onclick="onChangeRotor(0)">Rotor1 wechseln</button><br>
+                <p id="ro1error"></p>
+
+                <input type="text" id="makero2" class="textfeld">
+                <button type="button" onclick="onChangeRotor(1)">Rotor2 wechseln</button><br>
+                <p id="ro2error"></p>
+                
+                <input type="text" id="makero3" class="textfeld">
+                <button type="button" onclick="onChangeRotor(2)">Rotor3 wechseln</button><br>
+                <p id="ro3error"></p>
+
+                <p>Zeichensatz und Rotoren auf Ausgangswerte zurücksetzen: <button type="button" onclick="callResetCharSetRotors()">Zurücksetzen!</button></p>
+
+            </div>
+        </div>
+
+        <!--
+        <p>Rotoren austauschen:</p>
+        <input type="text" id="makero1">
+        <button type="button" onclick="callchangero1()">Rotor1 wechseln</button><br>
+        <p id="ro1error"></p>
+        <input type="text" id="makero2">
+        <button type="button" onclick="callchangero2()">Rotor2 wechseln</button><br>
+        <p id="ro2error"></p>
+        <input type="text" id="makero3">
+        <button type="button" onclick="callchangero3()">Rotor3 wechseln</button><br>
+        <p id="ro3error"></p>
+
+        <p>Zeichensatz und Rotoren auf Ausgangswerte zurücksetzen: <button type="button" onclick="callResetCharSetRotors()">Zurücksetzen!</button></p>
+        -->     
+
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Felderspiel</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="FelderSpiel.css">
+    <script type="text/javascript" src="FelderSpiel.js"></script>
+</head>
+
+<body onload="createBoard(), resetInputElements()">
+    <div id="Header">
+        <div id="LeftBlock">
+            <div id="AnleitungsBlock">
+                <button type="button" onclick="showAnleitung()">?</button>
+            </div>
+            <div id="FarbenBlock">
+                <label for="ColorAmount">Farben:</label><br>
+                <input type="range" id="ColorAmount" name="ColorAmount" value="2" min="2" max="6" onchange="changeColorAmount()"> 
+                <br>
+                <input type="color" id="ColorChoice1" class="ColorChoice" onchange="changeColor(0, this)" value="#008000">
+                <input type="color" id="ColorChoice2" class="ColorChoice" onchange="changeColor(1, this)" value="#0000ff"> 
+                <input type="color" id="ColorChoice3" class="ColorChoice" style="visibility:hidden" onchange="changeColor(2, this)" value="#ff0000"><br>
+                <input type="color" id="ColorChoice4" class="ColorChoice" style="visibility:hidden" onchange="changeColor(3,this)">
+                <input type="color" id="ColorChoice5" class="ColorChoice" style="visibility:hidden" onchange="changeColor(4,this)">
+                <input type="color" id="ColorChoice6" class="ColorChoice" style="visibility:hidden" onchange="changeColor(5,this)">
+            </div>
+            <div id="FelderanzahlBlock">
+                <label for="SpaltenAnzahl">Spalten:</label><br>
+                <input type="range" id="SpaltenAnzahl" name="SpaltenAnzahl" class="InputRange" value="8" min="2" max="32" step="1" onchange="changeFieldAmount()">
+                <br>
+                <label for="ReihenAnzahl">Reihen:</label><br>
+                <input type="range" id="ReihenAnzahl" name="ReihenAnzahl" value="8" min="2" max="32" step="1" onchange="changeFieldAmount()">
+                <br>
+            </div>
+        </div>
+
+        <div id="MidBlock">
+            <p id="ZeitAnzeige">Zeit</p>
+        </div>
+        
+        <div id="RightBlock">
+            <div id="GameModeBlock">
+                <button type="button" id="NormalModusKnopf" class="GameModeButton" onclick="onSetGameModeNormal()">Normalmodus</button> 
+                <button type="button" id="VorgabeKnopf" class="GameModeButton" onclick="onSetGameModeHB()">HB Vorgabe</button> 
+                <button type="button" id="ZufallsVorgabeKnopf" class="GameModeButton" onclick="onSetGameModeVorgabe()">Zufallsvorgabe</button> 
+                <br>
+            </div>
+            <table id="CellTabelle"></table>
+            <div id="SuperklickBlock">
+                Superklick!
+                <table id="SuperklickTabelle">
+                    <tr><th class="Abkling"></th><th class="Abkling"></th><th class="Abkling"></th><th class="Abkling"></th><th class="Abkling"></th><th class="Abkling"></th></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="Spielfeld">
+        Spielfeld
+    </div>
+
+    <div id="Anleitung">
+        <div>Bewege die Maus über die farbigen Felder, um sie umzufärben</div>
+        <div>Das Ziel des Spiels ist es, alle Felder richtig einzufärben.</div>
+        <div>Im Normalmodus sollen alle Felder von der gleichen Farbe sein.</div>
+        <div>Im Vorgabemodus sollen alle Felder der Vorgabe entsprechend eingefärbt sein.</div>
+        <div>Ist der Superklick aufgeladen, kannst du mit einem Klick die Farbe des gewählten Feldes ändern.</div>
+        <div>Wenn die Maus das Spielbrett verlässt, bricht das Spiel ab.</div>
+        <!--<div>Pass auf, dass die Maus nicht auf die Vorlage, oder die Superklickanzeige kommt, da das Spiel sonst ebenfalls abbricht.</div>-->
+        <div>Zwei gleich ausgewählte Farben (z.B. grün und grün) gelten trotzdem als verschieden.</div>
+        <div>Viel Spaß!</div>
+    </div>
+</body>
+</html>

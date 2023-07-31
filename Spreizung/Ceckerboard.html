@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Spreizung/ StraddlingCheckerboard</title>
+        <link rel="stylesheet" href="Checkerboard.css">
+        <script type="text/javascript" src="Checkerboard.js"></script>
+        <script type="text/javascript" src="Spreizung.js"></script>
+        <script type="text/javascript" src="CheckerDateienTest.js"></script>
+        <!--<script type="text/javascript" src="SpreizungData.js"></script>-->
+    
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="file:///C:/CodeProgramme/Verschluesselung/Enigma.html" style="float:left; font-size:20px">Rotorzeug</a>
+            <h1>Verschlüsselung nach Spreizung / Straddling Checkerboard</h1>
+        </div>
+
+
+        <div class="grid-container">
+            <div class="eingabeseite">
+            
+                <p class="beschreibung">Zeichensatz / Alphabet:</p>
+                <button type="button" onclick="onSetAlphabet()">Alphabet klein</button>
+                <button type="button" onclick="onSetAlphabetNumbersSpace()">Alphabet klein mit Leerzeichen und Zahlen</button> <br><br>
+                <input type="text" id="neuZeichensatz">
+                <button type="button" onclick="onNeueZeichen()">Zeichensatz einstellen</button>
+                <p id="gradZeichensatz" class="parameter">abcdefghijklmnopqrstuvwxyz</p>
+                <button type="button" onclick="onRandomizeAlphabet()">Vermischen</button>
+                
+                <p class="beschreibung">Schlüsselwort:</p>
+                <input type="text" id="neuSchlüsselwort">
+                <button type="button" onclick="onNeuesWort()">Schlüsselwort einstellen</button>
+                <p id="gradSchlüsselwort" class="parameter">secret</p>
+
+                <p class="beschreibung">Schlüsselziffern:</p>
+                <input type="text" id="neuSchlüsselziffern">
+                <button type="button" onclick="onNeueZiffern()">Schlüsselziffern einstellen</button>
+                <p id="gradSchlüsselziffern" class="parameter">789</p>
+
+                <!--
+                <p class="beschreibung">Eingabe:</p>
+                <input type="text" id="Eingabe">
+                -->
+                
+
+            </div>
+
+            <div class="tabellenDiv">
+                <table id="tabelle1">
+                    <tbody>
+                        <tr class="toprow">
+                            <th>0</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                        </tr>
+                        <tr><th></th><td class="full">s</td><td class="full">e</td><td class="full">c</td><td class="full">r</td><td class="full">t</td><td class="full">a</td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr><tr><th>7</th><td class="full">b</td><td class="full">d</td><td class="full">f</td><td class="full">g</td><td class="full">h</td><td class="full">i</td><td class="full">j</td><td class="full">k</td><td class="full">l</td></tr><tr><th>8</th><td class="full">m</td><td class="full">n</td><td class="full">o</td><td class="full">p</td><td class="full">q</td><td class="full">u</td><td class="full">v</td><td class="full">w</td><td class="full">x</td></tr><tr><th>9</th><td class="full">y</td><td class="full">z</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="spreizungsantwort">
+            <div class="textfeldFlexBox">
+                <div>
+                    <label for="InputFeld">Eingabe-Textfeld:</label><br>
+                    <textarea rows="10" cols ="90" name="InputFeld" id="InputFeld" class="TextFeld"></textarea> 
+                </div>
+                <div class="TextfeldKnopf">
+                    <button type="button" onclick="onSpreizung()" id="zuVerschlüsselnKnopf">Verschlüsseln</button> 
+                    <br><br>
+                    <button type="button" onclick="onEntSpreizung()" id="zuEntschlüsselnKnopf">Entschlüsseln</button>
+                    <!--<button type="button" onclick="onTextAreaToSpreizung()">Textfeld Verschlüsselung</button>-->
+                </div>
+                <div>
+                    <label for="AntwortFeld">Ausgabe-Textfeld:</label><br>
+                    <textarea rows="10" cols ="90" name="AntwortFeld" id="AntwortFeld" readonly="true" class="TextFeld"></textarea> <br>
+                </div>
+            </div>
+        </div>
+            <!-- <p id="spreizungsantwort">noch nichts da.</p> -->
+       
+
+        <div class="dateienbloecke">
+            <select id="whichFileFormat" onchange="onChangeFileBlockDisplay()">
+                <option value="txt">txt Dateiformat</option>
+                <option value="xml">xml Dateiformat</option>
+            </select>
+
+            <div class="dateiblock" id="dateiblock">
+                <div class="hochladeDiv">
+                    <p>Datei.txt Hochladen:</p>
+                    <input type="file" accept=".txt" id="Dateieingabe">
+                    <button type="button" onclick="onFileToEncrypt()">Datei zu Ergebnis</button>
+                    <select id="DateiVerarbeitungsRichtung" value="encrypt">
+                        <option value="encrypt">Verschlüsseln</option>
+                        <option value="decrypt">Entschlüsseln</option>
+                    </select>
+                    <p style="font-size:0.8em">Bei der Datei muss es sich um eine Textdatei handeln, deren Zeilen 1-4 ausschließlich aus Zeichensatz/Schlüsselwort/Schlüsselziffern/Eingabe in dieser Reihenfolge bestehen.</p>
+                </div>
+
+                <div class="runterladeDiv">
+                    <p>Datei Runterladen:</p>
+                    <button type="button" onclick="onToFile()">Ergebnis zu Datei</button>
+                    <select id="obDateiMitParameter" value="mit">
+                        <option value="mit">mit Parametern</option>
+                        <option value="ohne">ohne Parametern</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="XMLdateiblock" id="XMLdateiblock" style="display:none">
+                <div class="xmlHochladeDiv">
+                    <p>Datei.xml Hochladen:</p>
+                    <input type="file" accept=".xml" id="xmlDateieingabe">
+                    <button type="button" onclick="onXmlFileInput()">Datei zu Ergebnis (parsen)</button>
+                    <button type="button" onclick="onXmlFileInputHttpRequestTest()">Datei zu Ergebnis (XMLHttpRequest)</button>
+                    <!--nicht benötigt
+                    <select id="xmlDateiInputRichtung" value="encrypt">
+                        <option value="encrypt">Verschlüsseln</option>
+                        <option value="decrypt">Entschlüsseln</option>
+                    </select>-->
+                    <p style="font-size:0.8em">Bei der Datei muss es sich um eine XML-Datei handeln. Lad dir eine runter um zu schauen wie sie aussehen soll.</p>
+                </div>
+
+                <div>
+                    <p>xml Datei runterladen:</p>
+                    <button type="button" onclick="onToXmlFile()">Ergebnis zu xml-Datei</button>
+                </div>
+            </div>
+
+        </div>
+        
+        <table id="tabelleBackUp">
+            <tr class="toprow">
+                <th>0</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+            </tr>
+        </table>
+
+        <!--
+        <hr>
+        <h2>In Bau befindlich:</h2>
+
+        
+        <br><br><br>
+        <button type="button" style="margin-left: 50px;"onclick="onTextAreaToSpreizung()">Textfeld Verschlüsselung</button> 
+        <br><br>
+        -->
+        <!--<a href="" download="Dateiname.txt" id="download">Download der Verschlüsselung?</a>-->
+        <br>
+        
+    
+    </body>
+</html>

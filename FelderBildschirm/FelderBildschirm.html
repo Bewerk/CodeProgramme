@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <title>Bildschirm</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="FelderBildschirm.css">
+    <script type="text/javascript" src="FelderBildschirm-Daten.js"></script>
+    <script type="text/javascript" src="FelderBildschirm-Logik.js"></script>
+    <script type="text/javascript" src="FelderBildschirm.js"></script>
+</head>
+<body onload="todoOnLoad()">
+    <div class="Center">
+        <h1>Echokammer</h1>
+        <p>Sag mir Was.</p>
+        <input type="text" id="TextInput" value="Sag's hier." onkeydown="onTextInputKeyDown(event)"> <br>
+        <button type="button" id="TextButton" onclick="onTextInput()">Ich sag's dir!</button>
+        <p>Ich sag's zurück.</p>
+        <table id="BildSchirmTabelle"></table>
+        <div>
+            <button type="button" id="SlowButton" onclick="onSlowScreen()">Langsamer</button>
+            <button type="button" id="FastButton" onclick="onFasterScreen()">Schneller</button>
+        </div>
+        <div>
+            <button type="button" id="StopButton" onclick="stopScreen()">Stopp!</button>
+            <button type="button" id="WeiterButton" onclick="letScreenRun()">Weiter</button>
+        </div>
+        <button type="button" id="ResetButton" onclick="onResetScreen()">Zurücksetzen</button> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Charaktereditor</title>
+
+        <link rel="stylesheet" href="CharEditor.css">
+        <script type="text/javascript" src="Faehigkeiten.js"></script>
+        <script type="text/javascript" src="CharEditData.js"></script>
+        <script type="text/javascript" src="CharEditLogik.js"></script>
+        <script type="text/javascript" src="CharEditor.js"></script>
+        
+        
+    </head>
+    <body onload="resetSelects();refreshTable()">
+        
+        
+        <div class="header">
+            <div>
+                <h1>Hallo Welt</h1>
+            </div>
+            <div>
+                <img id="Mond" src="BildMond.jpg">
+            </div>
+            <div></div>
+        </div>
+        
+        <div id="gridBox">
+            <div id="selectBox">
+                <h3>Volk und Klasse</h3>
+                <select id="VolksWahl" onchange="onSelectVolk()">
+                    <option value="Mensch">Mensch</option>
+                    <option value="Elf">Elf</option>
+                    <option value="Zwerg">Zwerg</option>
+                    <option value="Ork">Ork</option>
+                </select>
+
+                <br>
+                <div class="VolksBeschreibung" id="Mensch">Menschen können alles. Aber irgendwie auch nichts.</div>
+                <div class="VolksBeschreibung" id="Elf">Elfen sind echt geschickt, essen aber nur grünes Gemüse.</div>
+                <div class="VolksBeschreibung" id="Zwerg">Zwerge rülpsen gern, wenn sie Bier trinken. Schaut viel in die Flasche.</div>
+                <div class="VolksBeschreibung" id="Ork">Orks sind voll stark, können sich aber nicht am Rücken kratzen.</div>
+
+                <br>
+
+                <select id="KlassenWahl" onchange="onSelectCharKlasse()">
+                    <option value="Kaempfer">Kämpfer</option>
+                    <option value="Schuetze">Schütze</option>
+                    <option value="Magier">Magier</option>
+                    <option value="Kleriker">Kleriker</option>
+                    <option value="Dieb">Dieb</option>
+                    <option value="Druide">Druide</option>
+                    <option value="Paladin">Paladin</option>
+                </select>
+                <br>
+
+                <div class="KlassenBeschreibung" id="Kaempfer">Kämpfer fegen alles was in ihrem Weg liegt weg. Besonders gut im säubern von Verließen. <p>Braucht Stärke</p></div>
+                <div class="KlassenBeschreibung" id="Schuetze">Der Schütze schützt nicht. Er hat nen Bogen und das war's. <p>Braucht Geschick.</p></div>
+                <div class="KlassenBeschreibung" id="Magier">Magie und so. Schaut viel in die Sterne. <p>Braucht Intelligenz</p></div>
+                <div class="KlassenBeschreibung" id="Kleriker">Andere Magie oder so. Schaut viel in die Sonne. <p>Braucht Weisheit. Und Augentropfen.</p></div>
+                <div class="KlassenBeschreibung" id="Dieb">Kann gut grinsen. Sehr diebisch. <p>Kann von nichts genug kriegen.</p></div>
+                <div class="KlassenBeschreibung" id="Druide">Naturverbunden, aber häufig irgendwie abgehoben. Verwandelt sich schonmal in einen Uhu. <p>Braucht Konstitution</p></div>
+                <div class="KlassenBeschreibung" id="Paladin">Der Paladin schützt. Kann aber keinen Bogen benutzen. Sieht immer gut aus. <p>Braucht Charisma</p></div>
+                <div class="KlassenBeschreibung" id=""></div>
+            </div>
+
+            <div id="tabellenBox">
+                <h3>Attributstabelle</h3>
+                <table onload="refreshTable()">
+                    <tr>
+                        <th>Attribut</th>
+                        <th>Basis</th>
+                        <th></th>
+                        <th></th>
+                        <th>Bonus</th>
+                        <th>Wert</th>
+                        <th>Modifikator</th>
+                    </tr>
+                    <tr>
+                        <th class="TooltipHover">Stärke
+                            <div class ="Tooltip">
+                                Stärke bestimmt wie viel du tragen kannst. Also investier schön viel in Stärke, du willst doch keine wertvolle Beute zurücklassen müssen, oder?
+                            </div>
+                        </th>
+                        <td id="StrWert">10</td>
+                        <td><button type='button' onclick="onChangeAttribut(0,false)">-</button> </td>
+                        <td><button type='button' onclick="onChangeAttribut(0,true)">+</button> </td>
+                        <td id="'StrBon" class="VolksBonus">0</td>
+                        <td id="EffektivStrWert">10</td>
+                        <td class="AttributModifikator">0</td>
+                    </tr>
+                    <tr>
+                        <th class="TooltipHover">Geschick
+                            <div class ="Tooltip">
+                                Je höher dein Geschick, desto besser kannst du Handstand machen. Und Bögen spannen. Weil Bogen Geschick und so.        
+                            </div>
+                        </th>
+                        <td id="GesWert">10</td>
+                        <td><button type='button' onclick="onChangeAttribut(1,false)">-</button> </td>
+                        <td><button type='button' onclick="onChangeAttribut(1,true)">+</button> </td>
+                        <td id='GesBon' class="VolksBonus">0</td>
+                        <td id="EffektivGesWert">10</td>
+                        <td class="AttributModifikator">0</td>
+                    </tr>
+                    <tr>
+                        <th class="TooltipHover">Konstitution
+                            <div class ="Tooltip">
+                                Mit hoher Konstitution wird man nicht so leicht krank, und kann mehr trinken. Wichtig in einer Welt ohne Zentralheizung und sauberem Trinkwasser.        
+                            </div>
+                        </th>
+                        <td id="KonstWert">10</td>
+                        <td><button type='button' onclick="onChangeAttribut(2,false)">-</button> </td>
+                        <td><button type='button' onclick="onChangeAttribut(2,true)">+</button> </td>
+                        <td id='KonstBon' class="VolksBonus">0</td>
+                        <td id="EffektivKonstWert">10</td>
+                        <td class="AttributModifikator">0</td>
+                    </tr>
+                    <tr>
+                        <th class="TooltipHover">Intelligenz
+                            <div class ="Tooltip">
+                                Je intelligenter du bist, desto mehr weißt du. Und du kannst quadratische Gleichungen im Kopf lösen.
+                            </div>
+                        </th>
+                        <td id="IntWert">10</td>
+                        <td><button type='button' onclick="onChangeAttribut(3,false)">-</button> </td>
+                        <td><button type='button' onclick="onChangeAttribut(3,true)">+</button> </td>
+                        <td id='IntBon' class="VolksBonus">0</td>
+                        <td id="EffektivIntWert">10</td>
+                        <td class="AttributModifikator">0</td>
+                    </tr>
+                    <tr>
+                        <th class="TooltipHover">Weisheit
+                            <div class ="Tooltip">
+                                Je weiser du bist, desto mehr weißt du, wie wenig du weißt. Dadurch kann man dich weniger leicht über's Ohr hauen.
+                            </div>
+                        </th>
+                        <td id="WeisWert">10</td>
+                        <td><button type='button' onclick="onChangeAttribut(4,false)">-</button> </td>
+                        <td><button type='button' onclick="onChangeAttribut(4,true)">+</button> </td>
+                        <td id='WeisBon' class="VolksBonus">0</td>
+                        <td id="EffektivWeisWert">10</td>
+                        <td class="AttributModifikator">0</td>
+                    </tr>
+                    <tr>
+                        <th class="TooltipHover">Charisma
+                            <div class ="Tooltip">
+                                Mit hohem Charisma kannst du andere glauben lassen, sie seien klug. Oder dumm. Dadurch kannst du andere leichter über's Ohr hauen.  
+                            </div>
+                        </th>
+                        <td id="ChaWert">10</td>
+                        <td><button type='button' onclick="onChangeAttribut(5,false)">-</button> </td>
+                        <td><button type='button' onclick="onChangeAttribut(5,true)">+</button> </td>
+                        <td id='ChaBon' class="VolksBonus">0</td>
+                        <td id="EffektivChaWert">10</td>
+                        <td class="AttributModifikator">0</td>
+                    </tr>
+                    <tr>
+                        <th>Restpunkte</th>
+                        <td id="Restpunkte">25</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="FaehigkeitenBox">
+                <h3>Fähigkeitenliste</h3>
+                <div id="FaehigkeitenListe"></div>
+            </div>
+
+            <div id="WerteBox">
+                <div id="CharakterWerte">
+                    <h3>Charakterwerte</h3>
+                    <table>
+                        <tr class="TooltipHover">
+                            <td>Trefferpunkte<div class="Tooltip">Trefferpunkte sind zum sammeln da.</div></td>
+                            <td id="Trefferpunkte">10</td>
+                        </tr>
+                        <tr class="TooltipHover">
+                            <td id="Ruestungsklasse">Rüstungsklasse<div class="Tooltip">Gesamt/Beruehr/Panzer  Panzer steigt durch Rüstung, Beruehr durch Geschick, Gesamt durch beides.</div></td>
+                            <td id="RKGesamt">10</td>
+                            <td id="RKBeruehr">10</td>
+                            <td id="RKPanzer">10</td>
+                        </tr>
+                        <tr  class="TooltipHover">
+                            <td>Angriffsbonus<div class="Tooltip">Nahkampf/Fernkampf  Hilft dir beim treffen.</div></td>
+                            <td id="NahkampfBonus">1</td>
+                            <td id="FernkampfBonus">1</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="FeuerBox">
+            <img id="Feuer"src="BildFeuer.jpg">;
+        </div>
+
+        <!--Von Indrajit Das, <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0">CC BY 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=38331993">Link</a>-->
+        <!--Airwolfhound, CC BY-SA 2.0 <https://creativecommons.org/licenses/by-sa/2.0>, via Wikimedia Commons https://commons.wikimedia.org/wiki/File:The_Moon_(49541753793).jpg-->
+        </body>
+</html>

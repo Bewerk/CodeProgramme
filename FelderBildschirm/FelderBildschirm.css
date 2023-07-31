@@ -1,0 +1,54 @@
+body {
+    background-color: rgb(32, 32, 32);
+    font-family: 'Lucida Console';
+    color: green;
+    font-size: 1.2em;
+}
+
+button {
+    background-color: black;
+    border-color: green;
+    color: aliceblue;
+    font-family: 'Lucida Console';
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1.0em;
+}
+input {
+    background-color: black;
+    border-color: green;
+    color: aliceblue;
+    font-family: 'Lucida Console';
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.0em;
+}
+
+.Center {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.Pixel {
+    background-color: aqua;
+    width: 3px;
+    height: 3px;
+    margin: 0px;
+}
+
+#BildSchirmTabelle {
+    gap: 0px;
+    border: green solid;
+    padding: 3px;
+    border-spacing: 0px;
+}
+
+.AUS {
+    background-color: black;
+}
+
+.AN {
+    background-color: green;
+}

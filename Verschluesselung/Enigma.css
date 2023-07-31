@@ -1,0 +1,85 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d8b075;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header'
+      'seft sight'
+      'below below';
+    gap: 10px;
+    background-color: #d8b075;
+    padding: 5px;
+    font-size: larger;
+}
+
+.header {
+    grid-area: header;
+    background-color: rgb(228, 228, 2);
+    text-align: center;
+}
+
+.left {
+    grid-area: seft;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    text-align: left;
+    background-color: rgb(231, 184, 81);
+    padding: 30px;
+}
+
+.right {
+    display: block;
+    grid-area: sight;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    float: right;
+    text-align: left;
+    background-color: rgb(228, 190, 107);
+    padding: 30px;
+    border: solid;
+}
+
+.below {
+    grid-area: below;
+    background-color: orange;
+    text-align: center;
+}
+
+#myCharSet {
+    background-color: orange;
+    padding: 3px;
+    width: auto;
+}
+
+#todecrypt {
+    width: 400px;
+}
+
+#charSetInput {
+    width: 400px;
+}
+
+.textfeld {
+    width: 400px;
+}
+
+#Rotor1 {
+    background-color: orange;
+    padding-right: 0%;
+}
+#Rotor2 {
+    background-color: orange;
+    padding-right: 0%;
+}
+#Rotor3 {
+    background-color: orange;
+    padding-right: 0%;
+}

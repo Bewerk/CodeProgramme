@@ -1,0 +1,138 @@
+body {
+    background-color: rgb(139, 59, 22);
+    font-size: 1.4em;
+    
+    /*background-image: url(BildFeuer.jpg);*/
+}
+
+td {
+    padding-right: 6px;
+    text-align: center;
+}
+
+table {
+    padding-bottom: 6px;
+}
+
+.header {
+    background-color: rgb(5, 5, 5);
+    color: azure;
+    height: 100px;
+    padding: 10px;
+    padding-top: 0px;
+    margin-bottom: 10px;
+    border: 5px groove red;
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 200px;
+    /*background-image: url(BildSterne.jpg);*/
+
+}
+img#Mond {
+        height: 110px;
+        width: 165px;
+        overflow: hidden;
+        margin-right: 12px;
+
+}
+img#Feuer {
+    height: 200px;
+    width: 400px;
+    overflow: hidden;
+    margin-left:16px;
+}
+#FeuerBox {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(5, 5, 5);
+    border: groove rgb(139, 59, 22);
+    border-radius: 7px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+#gridBox {
+    display: grid;
+    grid-template-areas:
+                        'one two'
+                        'three four';
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    margin-right: 10px;
+    
+} 
+#gridBox > div {
+        background-color:rgba(53, 148, 236, 0.651);
+        font-family: cursive;
+        padding: 0px 12px;
+        padding-bottom: 16px;
+        border: ridge rgb(139, 59, 22);
+        border-radius: 7px;
+}
+
+#selectBox {
+    grid-area: one;
+}
+#tabellenBox {
+    grid-area: two;
+}
+#FaehigkeitenBox {
+    grid-area: three;
+}
+#CharakterWerte {
+    grid-area: four;
+}
+
+.VolksBeschreibung {
+    display: none;
+}
+
+#Mensch{
+    display: block;
+}
+
+.KlassenBeschreibung {
+    display: none;
+}
+
+#Kaempfer{
+    display: block;
+}
+
+.Tooltip{
+    visibility: hidden;
+    position:absolute;
+    width: 200px;
+    z-index: 1;
+    background-color: rgb(173, 173, 173);
+    margin-left: 5px;
+    padding: 3px;
+    font-size: 0.7em;
+    font-weight:normal;
+    margin-left: 12px;
+    margin-top: 16px;
+}
+th > .Tooltip {
+    margin-left: 100px;
+    margin-top: 0px
+}
+td > .Tooltip {
+    margin-left: 100px;
+    margin-top: 0px;
+}
+
+.TooltipHover:hover .Tooltip {
+    visibility: visible;
+}
+
+select {
+    background-color:chocolate;
+    border-radius: 7px;
+    border-color: brown;
+    margin-bottom: 12px;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    font: bolder;
+}

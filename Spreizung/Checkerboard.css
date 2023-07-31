@@ -1,0 +1,125 @@
+body {
+    background-color: burlywood
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    /*background-color: rgba(157, 184, 94, 0.76);*/
+    
+}
+.grid-container > div {
+    max-width:100%;
+    justify-content: center;
+    background-color: rgba(157, 184, 94, 0.76);
+    padding-left: 50px;
+    padding-bottom: 12px;
+}
+
+.eingabeseite {
+    font-size: 1.2em;
+}
+
+.tabellenDiv {
+    padding-top: 50px;
+    font-size: 40px;
+}
+th, td.full {
+    border: solid rgb(0, 155, 0) 3px;
+    background-color: rgb(0, 155, 0);
+    padding: 5px 10px;
+    border-radius: 7px;
+}
+#tabelle1 {
+    background-color: purple;
+    border-radius: 7px;
+}
+
+#tabelleBackUp {
+    display: none;
+}
+
+.spreizungsantwort {
+    grid-column: 1/ 3;
+    background-color: rgba(157, 184, 94, 0.76);
+    padding: 30px 0px;
+    margin-top: 10px;
+}
+
+#spreizungsantwort {
+    font-size: 2em;
+    text-align: center;
+}
+
+input {
+    width: 300px;
+}
+
+.beschreibung {
+    font-size: 1.2em;
+    margin-top: 30px;
+}
+.parameter {
+    background-color: rgb(150, 185, 216);
+    width: min-content;
+    padding: 0px 4px;
+}
+
+.header {
+    background-color: rgb(238, 210, 85);
+    padding: 4px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.dateienbloecke {
+    background-color: rgb(108, 149, 212);
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+#whichFileFormat {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+
+.dateiblock {
+    background-color: rgb(108, 149, 212);
+    padding: 10px 50px;
+    margin-top: 10px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.XMLdateiblock {
+    background-color: rgb(108, 149, 212);
+    padding: 10px 50px;
+    margin-top: 10px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.textfeldFlexBox {
+    display:flex;
+    justify-content:flex-start;
+    gap:100px;
+    margin: 0px 50px;
+    align-items: center;
+    max-width: min-content;
+    
+}
+.TextFeld {
+    max-width:750px;
+    width: 300px;
+}
+/*
+.TextfeldKnopf{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+*/
